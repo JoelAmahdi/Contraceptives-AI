@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#832D51">
 <title>ContraceptAI — Informed Contraceptive Decisions Powered by AI</title>
 <style>
 
@@ -203,10 +207,138 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
 .slide.active .a6{animation:fadeUp 0.65s 0.58s ease both;}
 .floater{animation:float 4.5s ease-in-out infinite;}
 
-/* ── RESPONSIVE ── */
-@media(max-height:700px){h1{font-size:clamp(28px,5vw,52px);}h2{font-size:clamp(20px,3.5vw,38px);}}
-@media(max-height:600px){h2{font-size:clamp(18px,3vw,30px);}p{font-size:clamp(11px,1.1vw,14px);}}
-@media(prefers-reduced-motion:reduce){.slide,.slide *{animation:none!important;transition:opacity 0.3s!important;}}
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — Mobile & Tablet
+══════════════════════════════════════════════════════════════ */
+
+/* ── Tablet landscape 901px–1100px ── */
+@media(max-width:1100px){
+  .cols-4{grid-template-columns:repeat(2,1fr);}
+}
+
+/* ── Tablet portrait ≤900px ── */
+@media(max-width:900px){
+  .slide{padding:clamp(14px,3vw,32px) clamp(14px,4vw,40px);}
+  h1{font-size:clamp(28px,5vw,52px);}
+  h2{font-size:clamp(22px,4vw,42px);}
+  h3{font-size:clamp(14px,2.2vw,22px);}
+  p{font-size:clamp(12px,1.8vw,16px);}
+  .cols-3{grid-template-columns:repeat(2,1fr);}
+  .cols-4{grid-template-columns:repeat(2,1fr);}
+  .flow-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  .flow-arrow{display:none;}
+  .tl-row{flex-wrap:wrap;gap:12px;}
+  .tl-item{min-width:calc(50% - 12px);flex:1 1 calc(50% - 12px);}
+  .tl-item::before{display:none;}
+  .slide-row{flex-wrap:wrap;}
+  .slide-row .floater{order:-1;width:clamp(100px,20vw,160px)!important;margin:0 auto;}
+  .check-list li{font-size:clamp(11px,1.6vw,14px);}
+  .stat-num{font-size:clamp(24px,4vw,48px);}
+  .logo-badge{font-size:clamp(12px,2vw,16px);}
+  #slide-counter{font-size:11px;}
+  .tag{font-size:clamp(8px,1.2vw,11px);padding:3px 12px;}
+}
+
+/* ── Mobile ≤600px ── */
+@media(max-width:600px){
+  .slide{
+    padding:52px 16px 52px 16px;
+    justify-content:flex-start;
+    overflow-y:auto;
+    overflow-x:hidden;
+    -webkit-overflow-scrolling:touch;
+  }
+  h1{font-size:clamp(26px,7vw,38px);line-height:1.1;}
+  h2{font-size:clamp(20px,6vw,30px);line-height:1.15;}
+  h3{font-size:clamp(13px,4vw,18px);}
+  p{font-size:13px;line-height:1.6;}
+  .cols-2,.cols-3,.cols-4{grid-template-columns:1fr!important;}
+  .flow-row{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;}
+  .flow-arrow{display:none;}
+  .tl-row{flex-direction:column;gap:10px;}
+  .tl-item{min-width:100%;flex:1 1 100%;}
+  .tl-item::before{display:none;}
+  .tl-dot{margin-bottom:6px;}
+  /* Flip slide-row to column; show text first, mockup below (smaller) */
+  .slide-row{flex-direction:column!important;gap:16px!important;}
+  .slide-row .floater{
+    order:10;
+    width:clamp(120px,40vw,170px)!important;
+    margin:0 auto;
+    flex-shrink:0!important;
+  }
+  .slide-row > div[style*="flex:1"]{width:100%;}
+  .slide-row > div[style*="flex:1.2"]{width:100%;}
+  /* Flow diagram wraps to 2-col on mobile */
+  .flow-box{padding:8px 6px;}
+  .flow-box div:first-child{font-size:14px;}
+  /* Stats */
+  .stat-num{font-size:clamp(28px,7vw,44px);}
+  .stat-label{font-size:11px;}
+  /* Pills wrap nicely */
+  .pill{font-size:11px;padding:4px 10px;}
+  /* Check list compact */
+  .check-list li{font-size:12px;padding:5px 0;gap:8px;}
+  .check-icon{width:16px;height:16px;min-width:16px;font-size:9px;}
+  /* Cards */
+  .card{padding:10px 12px;}
+  /* Nav dots larger touch targets */
+  .dot{width:9px;height:9px;}
+  .dot.active{width:26px;}
+  /* Logo & counter */
+  .logo-badge{font-size:13px;}
+  #slide-counter{font-size:10px;}
+  .tag{font-size:9px;padding:3px 10px;letter-spacing:0.14em;}
+  /* Progress bar thicker */
+  #progress{height:4px;}
+  /* H-rule */
+  .h-rule{width:40px;}
+  /* Card grid gap */
+  .card-grid{gap:8px;}
+  /* Blob decorations — make smaller so they don't dominate */
+  .blob{opacity:0.15!important;}
+}
+
+/* ── Small mobile ≤380px ── */
+@media(max-width:380px){
+  h1{font-size:24px;}
+  h2{font-size:19px;}
+  .slide{padding:48px 12px 48px 12px;}
+  .slide-row .floater{width:120px!important;}
+}
+
+/* ── Landscape phone (short & narrow) ── */
+@media(max-height:500px) and (max-width:900px){
+  .slide{
+    padding:44px 20px 44px 20px;
+    justify-content:flex-start;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  h1{font-size:24px;}
+  h2{font-size:20px;}
+  .floater{display:none!important;}
+  .slide-row{flex-direction:row!important;}
+  .cols-2,.cols-3,.cols-4{grid-template-columns:1fr 1fr!important;}
+  .card{padding:8px 10px;}
+  p{font-size:12px;line-height:1.5;}
+  .check-list li{font-size:11px;}
+}
+
+/* ── Height-only breakpoints (desktop browsers resized small) ── */
+@media(max-height:700px) and (min-width:601px){
+  h1{font-size:clamp(28px,5vw,52px);}
+  h2{font-size:clamp(20px,3.5vw,38px);}
+}
+@media(max-height:600px) and (min-width:601px){
+  h2{font-size:clamp(18px,3vw,30px);}
+  p{font-size:clamp(11px,1.1vw,14px);}
+}
+
+/* ── Reduced motion ── */
+@media(prefers-reduced-motion:reduce){
+  .slide,.slide *{animation:none!important;transition:opacity 0.3s!important;}
+}
 </style>
 </head>
 <body>
@@ -241,20 +373,20 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
       <div style="position:absolute;inset:-8px;border:1.5px solid rgba(131,45,81,0.18);border-radius:50%;animation:pulse-ring 3s ease-in-out infinite;"></div>
     </div>
 
-    <div class="tag a1">AI Healthcare · Women's Health Innovation</div>
-    <h1 class="a2">Contraceptive<br><span class="accent-m">Decisions,</span> <span class="italic" style="color:var(--viridian);">Redefined.</span></h1>
+    <div class="tag a1">AI Healthcare · Women's Reproductive Health</div>
+    <h1 class="a2">Informative<br><span class="accent-m">Contraceptive</span> <span class="italic" style="color:var(--viridian);">Decisions.</span></h1>
     <div class="h-rule a3" style="margin:clamp(10px,2vh,18px) auto;"></div>
-    <p class="a3" style="font-size:clamp(13px,1.55vw,19px);max-width:580px;color:var(--mid-text);">
-      Introducing <strong style="color:var(--magenta);">ContraceptAI</strong> — an intelligent clinical platform empowering women to make fully informed, personalised contraceptive choices through evidence-based AI guidance.
+    <p class="a3" style="font-size:clamp(13px,1.55vw,19px);max-width:640px;color:var(--mid-text);">
+      <strong style="color:var(--magenta);">ContraceptAI</strong> is a clinician-certified AI platform that delivers personalised, evidence-based contraceptive guidance — and connects every woman directly to reproductive health specialists for complete, confident decision-making.
     </p>
     <div class="a4" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:clamp(16px,3vh,28px);">
-      <span class="pill">🔒 Privacy-First</span>
-      <span class="pill">🤖 AI Agent</span>
-      <span class="pill pill-v">🩺 Clinically Informed</span>
-      <span class="pill pill-v">📊 Research-Driven</span>
+      <span class="pill">🏅 Clinician Certified</span>
+      <span class="pill">🤖 AI-Powered Guidance</span>
+      <span class="pill pill-v">👩‍⚕️ Specialist Access</span>
+      <span class="pill pill-v">🔒 Privacy-First</span>
     </div>
     <p class="a5" style="margin-top:clamp(18px,3.5vh,32px);font-size:clamp(10px,1vw,13px);color:var(--muted);letter-spacing:0.07em;">
-      Dr. [Name] · MD, AI Healthcare Specialist · Gynaecology & Data Research
+      Dr. [Name] · MD, AI Healthcare Specialist · Reproductive Health &amp; Data Research · Presented to AI Healthcare Medical Society
     </p>
   </div>
 </div>
@@ -307,18 +439,18 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
   <div class="blob" style="background:var(--fairytale);width:400px;height:400px;bottom:-100px;right:-80px;opacity:0.6;filter:blur(80px);"></div>
   <div class="grid-bg"></div>
 
-  <div style="width:100%;max-width:1100px;z-index:2;display:flex;gap:clamp(20px,4vw,60px);align-items:center;">
+  <div class="slide-row" style="width:100%;max-width:1100px;z-index:2;display:flex;gap:clamp(20px,4vw,60px);align-items:center;">
     <div style="flex:1.2;">
       <div class="tag a1">Our Solution</div>
       <h2 class="a2" style="margin-bottom:clamp(10px,2vh,20px);">Meet <span class="accent-m">ContraceptAI</span></h2>
       <div class="h-rule a2"></div>
-      <p class="a3" style="margin-bottom:clamp(10px,2vh,18px);">A comprehensive AI-powered clinical platform combining an intelligent conversational agent, evidence-based medical algorithms, and a secure health data ecosystem to deliver <strong style="color:var(--magenta);">truly personalised contraceptive guidance.</strong></p>
+      <p class="a3" style="margin-bottom:clamp(10px,2vh,18px);">A <strong style="color:var(--magenta);">clinician-certified AI platform</strong> combining a conversational health agent, evidence-based medical algorithms, and direct access to board-certified reproductive specialists — delivering decisions women can fully trust.</p>
       <ul class="check-list a4">
-        <li><div class="check-icon">✓</div>AI chatbot trained on gynaecological & pharmacological evidence</li>
-        <li><div class="check-icon">✓</div>Secure biodata and full medical history collection</li>
-        <li><div class="check-icon">✓</div>Informed consent & anonymised research contribution</li>
+        <li><div class="check-icon">✓</div>AI chatbot trained on gynaecological &amp; pharmacological evidence</li>
+        <li><div class="check-icon">✓</div>Every recommendation reviewed &amp; certified by licensed clinicians</li>
+        <li><div class="check-icon">✓</div>Live access to reproductive specialists for complex cases</li>
         <li><div class="check-icon">✓</div>Evidence-ranked, personalised contraceptive recommendations</li>
-        <li><div class="check-icon check-icon-v">✓</div>Continuous AI improvement through aggregated data</li>
+        <li><div class="check-icon check-icon-v">✓</div>Informed consent, research contribution &amp; full data privacy</li>
       </ul>
     </div>
 
@@ -421,12 +553,12 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
         </ul>
       </div>
       <div class="card card-white">
-        <h3 style="font-size:clamp(13px,1.35vw,17px);margin-bottom:8px;">⚙️ AI Backend</h3>
+        <h3 style="font-size:clamp(13px,1.35vw,17px);margin-bottom:8px;">⚙️ AI + Clinician Layer</h3>
         <ul style="list-style:none;font-size:clamp(10px,1vw,13px);color:var(--muted);line-height:1.9;font-family:var(--body-font);">
           <li>→ LLM + Medical RAG system</li>
-          <li>→ Clinical decision trees</li>
           <li>→ WHO MEC eligibility rules</li>
-          <li>→ Continuous learning pipeline</li>
+          <li>→ Clinician certification pipeline</li>
+          <li>→ Specialist escalation engine</li>
         </ul>
       </div>
       <div class="card card-green">
@@ -448,7 +580,7 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
   <div class="blob" style="background:var(--cyclamen);width:320px;height:320px;bottom:-80px;right:-60px;opacity:0.2;filter:blur(90px);"></div>
   <div class="grid-bg"></div>
 
-  <div style="width:100%;max-width:1100px;z-index:2;display:flex;gap:clamp(24px,5vw,60px);align-items:center;">
+  <div class="slide-row" style="width:100%;max-width:1100px;z-index:2;display:flex;gap:clamp(24px,5vw,60px);align-items:center;">
     <!-- Sign In Mockup -->
     <div class="a1 floater" style="flex-shrink:0;width:clamp(130px,16vw,210px);">
       <svg viewBox="0 0 210 410" width="100%" xmlns="http://www.w3.org/2000/svg">
@@ -568,7 +700,7 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
 <div class="slide bg-viridian on-dark" data-slide="6">
   <div class="blob" style="background:var(--teagreen);width:350px;height:350px;top:-80px;right:-70px;opacity:0.25;filter:blur(80px);"></div>
 
-  <div style="width:100%;max-width:1100px;z-index:2;display:flex;gap:clamp(20px,4vw,56px);align-items:center;">
+  <div class="slide-row" style="width:100%;max-width:1100px;z-index:2;display:flex;gap:clamp(20px,4vw,56px);align-items:center;">
     <div style="flex:1;">
       <div class="tag tag-white a1" style="color:var(--teagreen);border-color:rgba(207,221,157,0.4);background:rgba(207,221,157,0.1);">Module 3 — Ethics & Privacy</div>
       <h2 class="a2" style="color:#fff;margin-bottom:clamp(10px,2vh,18px);">Consent Done <span style="color:var(--teagreen);">Right.</span></h2>
@@ -705,7 +837,7 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
 
     <div class="card card-white a4" style="display:flex;gap:14px;align-items:center;">
       <span style="font-size:20px;flex-shrink:0;">🛡️</span>
-      <p style="font-size:clamp(11px,1.1vw,14px);"><strong style="color:var(--magenta);">Trauma-informed & culturally sensitive design:</strong> All questions in this module are optional. The AI detects distress signals and responds with empathy. Questions about partner cooperation trigger safety-first protocols.</p>
+      <p style="font-size:clamp(11px,1.1vw,14px);"><strong style="color:var(--magenta);">Trauma-informed &amp; culturally sensitive design:</strong> All questions are optional. The AI detects distress signals and responds with empathy. Partner safety concerns trigger immediate connection to a <strong style="color:var(--viridian);">reproductive health specialist or counsellor</strong> — not just a protocol.</p>
     </div>
   </div>
 </div>
@@ -719,7 +851,7 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
     <div class="tag tag-white a1">The Brain</div>
     <h2 class="a2" style="color:#fff;margin-bottom:clamp(12px,2vh,20px);">The <span style="color:var(--fairytale);">AI Decision</span> Engine</h2>
 
-    <div style="display:flex;gap:clamp(16px,3vw,40px);align-items:flex-start;">
+    <div class="slide-row" style="display:flex;gap:clamp(16px,3vw,40px);align-items:flex-start;">
       <!-- Engine diagram -->
       <div class="a3 floater" style="flex-shrink:0;width:clamp(110px,16vw,200px);">
         <svg viewBox="0 0 200 200" width="100%" xmlns="http://www.w3.org/2000/svg">
@@ -755,12 +887,12 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
             <p style="font-size:clamp(10px,1vw,12px);color:rgba(255,255,255,0.65);">Hybrid RAG-LLM with clinical decision tree overlay. Outputs ranked methods with match scores and contraindication flags</p>
           </div>
           <div class="card" style="background:rgba(255,255,255,0.08);border-color:rgba(248,202,228,0.2);">
-            <h3 style="font-size:clamp(12px,1.25vw,15px);margin-bottom:6px;color:var(--fairytale);">🔄 Continuous Learning</h3>
-            <p style="font-size:clamp(10px,1vw,12px);color:rgba(255,255,255,0.65);">Anonymised feedback loop — user outcomes refine the model quarterly via IRB-approved federated learning</p>
+            <h3 style="font-size:clamp(12px,1.25vw,15px);margin-bottom:6px;color:var(--fairytale);">🏅 Clinician Certification</h3>
+            <p style="font-size:clamp(10px,1vw,12px);color:rgba(255,255,255,0.65);">Every AI recommendation pathway is reviewed, validated &amp; certified by a panel of board-certified OB/GYN and reproductive endocrinology specialists before deployment</p>
           </div>
           <div class="card" style="background:rgba(207,221,157,0.1);border-color:rgba(207,221,157,0.3);">
-            <h3 style="font-size:clamp(12px,1.25vw,15px);margin-bottom:6px;color:var(--teagreen);">🚨 Safety Guardrails</h3>
-            <p style="font-size:clamp(10px,1vw,12px);color:rgba(255,255,255,0.65);">Hard-coded contraindication rules override model outputs. WHO MEC Cat. 3/4 conditions auto-escalate to clinician</p>
+            <h3 style="font-size:clamp(12px,1.25vw,15px);margin-bottom:6px;color:var(--teagreen);">👩‍⚕️ Specialist Escalation</h3>
+            <p style="font-size:clamp(10px,1vw,12px);color:rgba(255,255,255,0.65);">WHO MEC Cat. 3/4 flags instantly connect users to a live reproductive specialist. Complex histories trigger priority booking within 24 hours</p>
           </div>
         </div>
       </div>
@@ -774,7 +906,7 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
   <div class="blob" style="background:var(--teagreen);width:300px;height:300px;bottom:-70px;right:-60px;opacity:0.35;filter:blur(80px);"></div>
   <div class="grid-bg"></div>
 
-  <div style="width:100%;max-width:1100px;z-index:2;display:flex;gap:clamp(20px,4vw,50px);align-items:center;">
+  <div class="slide-row" style="width:100%;max-width:1100px;z-index:2;display:flex;gap:clamp(20px,4vw,50px);align-items:center;">
     <!-- Output mockup -->
     <div class="a1 floater" style="flex-shrink:0;width:clamp(130px,16vw,210px);">
       <svg viewBox="0 0 210 430" width="100%" xmlns="http://www.w3.org/2000/svg">
@@ -806,10 +938,12 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
         <rect x="26" y="244" width="115" height="5" rx="2.5" fill="rgba(207,221,157,0.3)"/>
         <text x="26" y="258" font-size="5.5" fill="rgba(255,255,255,0.25)" font-family="MadeTommy,sans-serif">Good if estrogen-sensitive · 74% match</text>
         <!-- Buttons -->
-        <rect x="19" y="280" width="172" height="26" rx="8" fill="rgba(131,45,81,0.2)" stroke="rgba(131,45,81,0.4)" stroke-width="1"/>
-        <text x="105" y="297" text-anchor="middle" font-size="7" fill="rgba(248,202,228,0.8)" font-family="MadeTommy,sans-serif">💬 Ask AI about any option →</text>
-        <rect x="19" y="314" width="172" height="26" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-        <text x="105" y="331" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.4)" font-family="MadeTommy,sans-serif">📍 Find nearest clinic →</text>
+        <rect x="19" y="276" width="172" height="24" rx="8" fill="rgba(131,45,81,0.2)" stroke="rgba(131,45,81,0.4)" stroke-width="1"/>
+        <text x="105" y="292" text-anchor="middle" font-size="6.5" fill="rgba(248,202,228,0.85)" font-family="MadeTommy,sans-serif">💬 Ask AI about any option →</text>
+        <rect x="19" y="306" width="172" height="24" rx="8" fill="rgba(68,122,95,0.25)" stroke="rgba(207,221,157,0.5)" stroke-width="1.5"/>
+        <text x="105" y="322" text-anchor="middle" font-size="6.5" fill="rgba(207,221,157,0.9)" font-family="MadeTommy,sans-serif">👩‍⚕️ Speak to a Specialist →</text>
+        <rect x="19" y="336" width="172" height="22" rx="7" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <text x="105" y="351" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.38)" font-family="MadeTommy,sans-serif">📍 Find nearest clinic →</text>
         <rect x="80" y="408" width="50" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
       </svg>
     </div>
@@ -818,12 +952,12 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
       <div class="tag a2">Module 6 — Output</div>
       <h2 class="a2">Ranked <span class="accent-m">Contraceptive</span> Recommendations</h2>
       <div class="h-rule a2"></div>
-      <p class="a3" style="margin-bottom:clamp(10px,2vh,16px);">Every recommendation includes a <strong style="color:var(--magenta);">match percentage</strong>, plain-language explanation, benefits, risks, and a follow-up chatbot ready to answer questions.</p>
+      <p class="a3" style="margin-bottom:clamp(10px,2vh,16px);">Every recommendation is <strong style="color:var(--magenta);">clinician-certified</strong>, with a match percentage, plain-language explanation, and a direct pathway to a reproductive specialist for any question that needs a human answer.</p>
       <div class="card-grid cols-2 a4">
-        <div class="card card-white"><div style="font-size:14px;margin-bottom:4px;">📊</div><p style="font-size:clamp(10px,1.05vw,13px);">Match scoring 0–100% based on clinical eligibility and personal profile fit</p></div>
-        <div class="card card-white"><div style="font-size:14px;margin-bottom:4px;">⚠️</div><p style="font-size:clamp(10px,1.05vw,13px);">Automatic contraindication flags with clinician referral for complex cases</p></div>
-        <div class="card card-white"><div style="font-size:14px;margin-bottom:4px;">🔎</div><p style="font-size:clamp(10px,1.05vw,13px);">Deep-dive AI chat: side effects, costs, comparison, insertion procedures</p></div>
-        <div class="card card-green"><div style="font-size:14px;margin-bottom:4px;">📍</div><p style="font-size:clamp(10px,1.05vw,13px);color:var(--viridian);">Clinic finder and appointment booking integration in Phase 2</p></div>
+        <div class="card card-white"><div style="font-size:14px;margin-bottom:4px;">📊</div><p style="font-size:clamp(10px,1.05vw,13px);">0–100% match score based on clinical eligibility, medical history &amp; personal profile</p></div>
+        <div class="card card-white"><div style="font-size:14px;margin-bottom:4px;">🏅</div><p style="font-size:clamp(10px,1.05vw,13px);"><strong style="color:var(--magenta);">Clinician-certified pathways</strong> — every output validated by our OB/GYN advisory panel</p></div>
+        <div class="card card-white"><div style="font-size:14px;margin-bottom:4px;">💬</div><p style="font-size:clamp(10px,1.05vw,13px);">AI deep-dive chat: side effects, costs, comparisons, insertion procedures explained simply</p></div>
+        <div class="card card-green"><div style="font-size:14px;margin-bottom:4px;">👩‍⚕️</div><p style="font-size:clamp(10px,1.05vw,13px);color:var(--viridian);"><strong>Speak to a specialist</strong> — live video or chat consultation with a reproductive health expert, within 24 hrs</p></div>
       </div>
     </div>
   </div>
@@ -912,8 +1046,8 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
         <div class="stat-label" style="color:rgba(255,255,255,0.45);">identifiable personal data ever shared with researchers or third parties</div>
       </div>
       <div class="card" style="background:rgba(207,221,157,0.1);border-color:rgba(207,221,157,0.3);text-align:center;">
-        <div class="stat-num" style="color:var(--teagreen);font-size:clamp(22px,3.5vw,42px);">IRB</div>
-        <div class="stat-label" style="color:rgba(255,255,255,0.45);">Institutional Review Board approval before any research use of data</div>
+        <div class="stat-num" style="color:var(--teagreen);font-size:clamp(22px,3.5vw,42px);">24hr</div>
+        <div class="stat-label" style="color:rgba(255,255,255,0.45);">Maximum wait time for access to a reproductive specialist after AI flag</div>
       </div>
     </div>
   </div>
@@ -939,11 +1073,11 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
         </ul>
       </div>
       <div class="card card-white">
-        <h3 style="font-size:clamp(13px,1.35vw,17px);margin-bottom:9px;">🩺 Clinical Guardrails</h3>
+        <h3 style="font-size:clamp(13px,1.35vw,17px);margin-bottom:9px;">🏅 Clinician Certification</h3>
         <ul class="check-list">
-          <li><div class="check-icon">✓</div>AI <strong style="color:var(--magenta);">supports</strong> decision-making — never replaces the physician</li>
-          <li><div class="check-icon">✓</div>Category 3/4 MEC conditions trigger mandatory clinician referral</li>
-          <li><div class="check-icon">✓</div>Clinical advisory board quarterly review of all AI outputs</li>
+          <li><div class="check-icon">✓</div>All recommendation pathways certified by board-certified OB/GYN specialists</li>
+          <li><div class="check-icon">✓</div>MEC Cat. 3/4 flags trigger immediate specialist referral — not just a warning</li>
+          <li><div class="check-icon">✓</div>Quarterly advisory board review &amp; re-certification of every AI output pathway</li>
         </ul>
       </div>
       <div class="card card-white">
@@ -955,11 +1089,11 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
         </ul>
       </div>
       <div class="card card-green">
-        <h3 style="font-size:clamp(13px,1.35vw,17px);margin-bottom:9px;color:var(--viridian);">🌐 Equity & Inclusion</h3>
+        <h3 style="font-size:clamp(13px,1.35vw,17px);margin-bottom:9px;color:var(--viridian);">👩‍⚕️ Specialist Access Tiers</h3>
         <ul class="check-list">
-          <li style="color:var(--viridian);border-color:rgba(68,122,95,0.1);"><div class="check-icon check-icon-v">✓</div>Designed for LMIC deployment with offline-first capability</li>
-          <li style="color:var(--viridian);border-color:rgba(68,122,95,0.1);"><div class="check-icon check-icon-v">✓</div>Literacy-adapted UI: voice input, icon-led navigation</li>
-          <li style="color:var(--viridian);border-color:rgba(68,122,95,0.1);"><div class="check-icon check-icon-v">✓</div>Subsidy model for free access in low-resource settings</li>
+          <li style="color:var(--viridian);border-color:rgba(68,122,95,0.1);"><div class="check-icon check-icon-v">✓</div>Tier 1 — AI chatbot answers; Tier 2 — Certified clinician review; Tier 3 — Live specialist consult</li>
+          <li style="color:var(--viridian);border-color:rgba(68,122,95,0.1);"><div class="check-icon check-icon-v">✓</div>Video, audio, and chat consults with reproductive health experts within 24 hours</li>
+          <li style="color:var(--viridian);border-color:rgba(68,122,95,0.1);"><div class="check-icon check-icon-v">✓</div>Subsidy model ensures specialist access for women in low-resource settings</li>
         </ul>
       </div>
     </div>
@@ -976,7 +1110,7 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
     <div class="tag a1">Go-to-Market</div>
     <h2 class="a2" style="margin-bottom:clamp(14px,2.5vh,26px);">Implementation <span class="accent-m">Roadmap</span></h2>
 
-    <div class="a3" style="display:flex;gap:0;width:100%;margin-bottom:clamp(12px,2vh,20px);">
+    <div class="a3" class="tl-row" style="display:flex;gap:0;width:100%;margin-bottom:clamp(12px,2vh,20px);">
       <div class="tl-item">
         <div class="tl-dot">1</div>
         <div class="card card-white" style="width:100%;text-align:center;">
@@ -1048,15 +1182,36 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
       Every Woman Deserves an<br><span class="accent-m">Expert She Can Trust.</span>
     </h2>
     <div class="h-rule a2" style="margin:clamp(8px,1.5vh,14px) auto;"></div>
-    <p class="a3" style="font-size:clamp(13px,1.45vw,18px);max-width:600px;">
-      ContraceptAI bridges the gap between clinical expertise and personal access. We seek <strong style="color:var(--magenta);">medical society endorsement</strong>, <strong style="color:var(--viridian);">clinical partners</strong>, <strong style="color:var(--magenta);">research collaborators</strong>, and <strong style="color:var(--viridian);">seed investment</strong> to bring this vision to life.
+    <p class="a3" style="font-size:clamp(13px,1.45vw,18px);max-width:660px;">
+      ContraceptAI transforms contraceptive care from guesswork into a <strong style="color:var(--magenta);">clinician-certified, AI-guided, specialist-supported</strong> journey — ensuring no woman ever makes this decision uninformed or alone. We invite the medical community to help us scale this vision globally.
     </p>
 
-    <div class="a4" style="display:flex;gap:clamp(8px,1.5vw,16px);flex-wrap:wrap;justify-content:center;margin-top:clamp(14px,2.5vh,22px);">
-      <div class="card card-white" style="display:flex;align-items:center;gap:8px;min-width:150px;">🤝 <span style="font-size:clamp(11px,1.1vw,14px);font-weight:600;color:var(--magenta);">Clinical Partnerships</span></div>
-      <div class="card card-white" style="display:flex;align-items:center;gap:8px;min-width:150px;">🔬 <span style="font-size:clamp(11px,1.1vw,14px);font-weight:600;color:var(--magenta);">Research Collaboration</span></div>
-      <div class="card card-green" style="display:flex;align-items:center;gap:8px;min-width:150px;">💰 <span style="font-size:clamp(11px,1.1vw,14px);font-weight:600;color:var(--viridian);">Seed Investment</span></div>
-      <div class="card card-green" style="display:flex;align-items:center;gap:8px;min-width:150px;">📋 <span style="font-size:clamp(11px,1.1vw,14px);font-weight:600;color:var(--viridian);">Society Endorsement</span></div>
+    <div class="a4" style="display:flex;gap:clamp(8px,1.5vw,14px);flex-wrap:wrap;justify-content:center;margin-top:clamp(14px,2.5vh,20px);">
+      <div class="card card-white" style="display:flex;flex-direction:column;align-items:center;gap:5px;min-width:140px;text-align:center;padding:clamp(10px,1.8vh,16px) clamp(12px,1.5vw,18px);">
+        <span style="font-size:20px;">🏅</span>
+        <span style="font-size:clamp(10px,1.05vw,13px);font-weight:700;color:var(--magenta);">Clinician Partners</span>
+        <span style="font-size:clamp(9px,0.9vw,11px);color:var(--muted);">OB/GYNs &amp; Reproductive Specialists</span>
+      </div>
+      <div class="card card-white" style="display:flex;flex-direction:column;align-items:center;gap:5px;min-width:140px;text-align:center;padding:clamp(10px,1.8vh,16px) clamp(12px,1.5vw,18px);">
+        <span style="font-size:20px;">🤝</span>
+        <span style="font-size:clamp(10px,1.05vw,13px);font-weight:700;color:var(--magenta);">Hospital Networks</span>
+        <span style="font-size:clamp(9px,0.9vw,11px);color:var(--muted);">NHS, Private &amp; LMIC Health Systems</span>
+      </div>
+      <div class="card card-white" style="display:flex;flex-direction:column;align-items:center;gap:5px;min-width:140px;text-align:center;padding:clamp(10px,1.8vh,16px) clamp(12px,1.5vw,18px);">
+        <span style="font-size:20px;">🔬</span>
+        <span style="font-size:clamp(10px,1.05vw,13px);font-weight:700;color:var(--magenta);">Research Collaboration</span>
+        <span style="font-size:clamp(9px,0.9vw,11px);color:var(--muted);">IRB-approved &amp; peer-reviewed output</span>
+      </div>
+      <div class="card card-green" style="display:flex;flex-direction:column;align-items:center;gap:5px;min-width:140px;text-align:center;padding:clamp(10px,1.8vh,16px) clamp(12px,1.5vw,18px);">
+        <span style="font-size:20px;">💰</span>
+        <span style="font-size:clamp(10px,1.05vw,13px);font-weight:700;color:var(--viridian);">Seed Investment</span>
+        <span style="font-size:clamp(9px,0.9vw,11px);color:var(--viridian);opacity:0.8;">£320K · Phase 1–2 runway</span>
+      </div>
+      <div class="card card-green" style="display:flex;flex-direction:column;align-items:center;gap:5px;min-width:140px;text-align:center;padding:clamp(10px,1.8vh,16px) clamp(12px,1.5vw,18px);">
+        <span style="font-size:20px;">📋</span>
+        <span style="font-size:clamp(10px,1.05vw,13px);font-weight:700;color:var(--viridian);">Society Endorsement</span>
+        <span style="font-size:clamp(9px,0.9vw,11px);color:var(--viridian);opacity:0.8;">Medical society &amp; ethics board backing</span>
+      </div>
     </div>
 
     <div class="a5" style="margin-top:clamp(14px,2.5vh,22px);padding-top:clamp(10px,2vh,18px);border-top:1px solid rgba(131,45,81,0.12);width:100%;">
@@ -1068,7 +1223,7 @@ p{font-family:var(--body-font);font-size:clamp(12px,1.35vw,17px);line-height:1.7
         AI Healthcare Medical Society — 2025
       </p>
       <p style="margin-top:6px;font-size:clamp(10px,0.95vw,13px);color:var(--muted);font-style:italic;">
-        "The right information at the right time changes lives."
+        "The right information, a certified clinician, and a specialist on call — every woman deserves all three."
       </p>
     </div>
   </div>
@@ -1098,7 +1253,10 @@ function goTo(n) {
   slides[current].classList.remove('active');
   document.querySelectorAll('.dot')[current].classList.remove('active');
   current = n;
-  slides[current].classList.add('active');
+  const s = slides[current];
+  s.classList.add('active');
+  // Reset scroll position on mobile when switching slides
+  s.scrollTop = 0;
   document.querySelectorAll('.dot')[current].classList.add('active');
   counter.textContent = `${current + 1} / ${total}`;
   progress.style.width = `${((current + 1) / total) * 100}%`;
@@ -1111,11 +1269,18 @@ document.addEventListener('keydown', e => {
   if (e.key === 'End') goTo(total - 1);
 });
 
-let touchX = 0;
-document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, {passive:true});
+let touchX = 0, touchY = 0;
+document.addEventListener('touchstart', e => {
+  touchX = e.touches[0].clientX;
+  touchY = e.touches[0].clientY;
+}, {passive:true});
 document.addEventListener('touchend', e => {
   const dx = touchX - e.changedTouches[0].clientX;
-  if (Math.abs(dx) > 50) goTo(dx > 0 ? current + 1 : current - 1);
+  const dy = touchY - e.changedTouches[0].clientY;
+  // Only swipe slides if horizontal gesture is dominant
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 44) {
+    goTo(dx > 0 ? current + 1 : current - 1);
+  }
 }, {passive:true});
 
 let wheelLock = false;
